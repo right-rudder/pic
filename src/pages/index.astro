@@ -1,4 +1,8 @@
 ---
+import CTALeft from '../components/ctas/CTALeft.astro';
+import CTARight from '../components/ctas/CTARight.astro';
+import HeaderMain from '../components/headers/HeaderMain.astro';
+import Why from '../components/sections/Why.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../data/consts';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -199,4 +203,8 @@ const data = {
 	siteTitle={SITE_TITLE}
 	siteDescription={SITE_DESCRIPTION}
 >
+	<HeaderMain />
+	<CTARight />
+	<Why />
+	<CTALeft />
 </BaseLayout>
