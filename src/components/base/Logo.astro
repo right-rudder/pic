@@ -6,7 +6,7 @@ const { blackAndWhite = false, classes = "" } = Astro.props;
 
 {
   blackAndWhite &&
-    <div class={`${classes} bg-amber-800/40 rounded-2xl py-2 px-2 transition-all duration-300 ease-in-out`} id="logo-black-and-white">
+    <div class={`${classes} bg-amber-800/40 rounded-full py-2 px-2 transition-all duration-300 ease-in-out`} id="logo-black-and-white">
       <ImageComp 
         src={"/src/assets/LogoPIlotInstructionalCenter.png"}
         alt={"Logo for Pilot Instructional Center"}
