@@ -1,0 +1,48 @@
+---
+import ImageComp from "../utils/ImageComp.astro";
+
+const example = {
+  image: {
+    src: "/src/assets/stock-man-airplanes-museum.jpg",
+    alt: "Example Image",
+  },
+  title: "Ready to get started?",
+  description:
+    "Contact us today to discuss your project and discover how we can help you achieve your goals.",
+  button: {
+    text: "Contact Us",
+    href: "/contact",
+  },
+};
+
+const { content = example } = Astro.props;
+---
+
+<div class="py-12 bg-amber-900">
+  <div class="mx-auto flex max-w-7xl flex-col overflow-hidden md:flex-row">
+    <div class="flex-1 bg-amber-900 ">
+      <ImageComp
+        src={content.image.src}
+        alt={content.image.alt}
+        classes="object-cover h-full w-full rounded-tr-full rounded-br-full"
+      />
+    </div>
+    <div class="bg-amber-900 flex-1 text-white">
+      <div class="flex flex-col px-8 py-12 sm:px-12 lg:py-20">
+        <h2
+          class="text-4xl font-semibold tracking-tight text-pretty sm:text-5xl"
+        >
+          {content.title}
+        </h2>
+        <p class="mt-6 text-lg/8 text-pretty text-gray-300">
+          {content.description}
+        </p>
+        <div class="mt-10 flex">
+          <a href={content.button.href} class="btn-accent">
+            {content.button.text}</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
