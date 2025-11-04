@@ -1,8 +1,6 @@
 ---
 import Logo from "./Logo.astro";
 
-// Add selected page styling
-
 export type MenuItem = {
   label: string;
   url: string;
@@ -16,22 +14,13 @@ export type NavbarButton = {
 };
 
 export const menuLeft: MenuItem[] = [
-  {
-    label: "New to flying",
-    url: "/new-to-flying",
-  },
+  { label: "New to flying", url: "/new-to-flying" },
   {
     label: "Pilot Training",
     url: "/flight-training",
     children: [
-      {
-        label: "Private Pilot Certificate",
-        url: "/flight-training/private-pilot-certificate",
-      },
-      { 
-        label: "Fear of Flying", 
-        url: "/flight-training/fear-of-flying" 
-      },
+      { label: "Private Pilot Certificate", url: "/flight-training/private-pilot-certificate" },
+      { label: "Fear of Flying", url: "/flight-training/fear-of-flying" },
     ],
   },
 ];
@@ -50,620 +39,132 @@ export const menuRight: MenuItem[] = [
   },
 ];
 
-
-export const buttons: NavbarButton[] = [{ text: "Enroll Now", href: "/#enroll-form", style: "btn-primary text-lg!" }];
+export const buttons: NavbarButton[] = [
+  { text: "Enroll Now", href: "/#enroll-form", style: "bg-amber-700 text-white text-lg rounded-full px-4 py-2 hover:brightness-110 transition" },
+];
 
 const { pathname } = Astro.props;
 ---
 
-<nav id="navbar" class="navbar">
-  <div class="container bg-white md:bg-transparent">
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
+  <div class="max-w-6xl w-full flex items-center justify-between px-4 py-2 bg-white md:bg-transparent transition-all duration-300">
 
-    <!-- Desktop Menu -->
-    <ul class="nav">
-      {
-        menuLeft.map((item, index) => (
-          <li class={`menu-item ${item.children ? "has-children" : ""}`} data-index={index}>
-            <a href={item.url}>{item.label}</a>
-            {item.children && (
-              <ul class="sub-menu">
-                {item.children.map((child) => (
-                  <li>
-                    <a
-                      href={child.url}
-                      class={child.url === pathname || child.url + "/" === pathname ? "menu-link-hover" : ""}
-                    >
-                      {child.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))
-      }
+    <!-- Left Menu -->
+    <ul class="hidden md:flex gap-8 text-white">
+      {menuLeft.map((item) => (
+        <li class="relative group">
+          <a href={item.url} class="font-medium uppercase transition hover:underline hover:underline-offset-2">{item.label}</a>
+          {item.children && (
+            <ul class="absolute top-full left-0 min-w-[220px] bg-amber-800 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+              {item.children.map((child) => (
+                <li>
+                  <a href={child.url} class={`block px-4 py-2 hover:bg-amber-700 transition ${child.url === pathname ? "bg-amber-700" : ""}`}>
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
     </ul>
-    
+
     <!-- Logo -->
-    <a href="/" class="logo object-contain w-36 md:w-52 h-auto">
+    <a href="/" class="flex-shrink-0 w-36 md:w-52">
       <Logo classes="block md:hidden" />
       <Logo classes="hidden md:block" blackAndWhite={true} />
     </a>
 
-    <!-- Desktop Menu -->
-    <ul class="nav">
-      {
-        menuRight.map((item, index) => (
-          <li class={`menu-item ${item.children ? "has-children" : ""}`} data-index={index}>
-            <a href={item.url}>{item.label}</a>
-            {item.children && (
-              <ul class="sub-menu">
-                {item.children.map((child) => (
-                  <li>
-                    <a
-                      href={child.url}
-                      class={child.url === pathname || child.url + "/" === pathname ? "menu-link-hover" : ""}
-                    >
-                      {child.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))
-      }
+    <!-- Right Menu -->
+    <ul class="hidden md:flex gap-8 text-white">
+      {menuRight.map((item) => (
+        <li class="relative group">
+          <a href={item.url} class="font-medium uppercase transition hover:underline hover:underline-offset-2">{item.label}</a>
+          {item.children && (
+            <ul class="absolute top-full left-0 min-w-[220px] bg-amber-800 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+              {item.children.map((child) => (
+                <li>
+                  <a href={child.url} class={`block px-4 py-2 hover:bg-amber-700 transition ${child.url === pathname ? "bg-amber-700" : ""}`}>
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
     </ul>
 
     <!-- Buttons -->
-    <div class="buttons">
-      {
-        buttons.map((button) => (
-          <a href={button.href} class={button.style}>
-            {button.text}
-          </a>
-        ))
-      }
+    <div class="hidden md:flex items-center">
+      {buttons.map((button) => (
+        <a href={button.href} class={button.style}>{button.text}</a>
+      ))}
     </div>
 
     <!-- Mobile Hamburger -->
-    <button id="mobile-toggle" class="hamburger" aria-label="Toggle menu">
-      <svg
-        class="hamburger-menu-bars"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <line x1="3" x2="21" y1="6" y2="6"></line>
-        <line x1="3" x2="21" y1="12" y2="12"></line>
-        <line x1="3" x2="21" y1="18" y2="18"></line>
+    <button id="mobile-toggle" class="md:hidden flex flex-col gap-1 text-white focus:outline-none" aria-label="Toggle menu">
+      <svg id="bars" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" x2="21" y1="6" y2="6" />
+        <line x1="3" x2="21" y1="12" y2="12" />
+        <line x1="3" x2="21" y1="18" y2="18" />
       </svg>
-      <svg
-        class="hamburger-menu-x"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M18 6 6 18"></path>
-        <path d="m6 6 12 12"></path>
+      <svg id="xmark" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 6l12 12M18 6L6 18" />
       </svg>
     </button>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="mobile-menu">
-    <ul>
-      {
-        menuLeft.map((item, index) => (
-          <li class="mobile-item" data-index={index}>
-            <a href={item.url}>{item.label}</a>
-            {item.children && (
-              <ul class="mobile-submenu">
-                {item.children.map((child) => (
-                  <li>
-                    <a
-                      href={child.url}
-                      class={child.url === pathname || child.url + "/" === pathname ? "menu-link-hover" : ""}
-                    >
-                      {child.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))
-      }
-      {
-        menuRight.map((item, index) => (
-          <li class="mobile-item" data-index={index}>
-            <a href={item.url}>{item.label}</a>
-            {item.children && (
-              <ul class="mobile-submenu">
-                {item.children.map((child) => (
-                  <li>
-                    <a
-                      href={child.url}
-                      class={child.url === pathname || child.url + "/" === pathname ? "menu-link-hover" : ""}
-                    >
-                      {child.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))
-      }
+  <div id="mobile-menu" class="absolute top-full left-0 w-full bg-amber-800 text-white max-h-0 overflow-hidden transition-all duration-500">
+    <ul class="flex flex-col px-4 py-2 space-y-2">
+      {[...menuLeft, ...menuRight].map((item) => (
+        <li class="border-b border-amber-700">
+          <a href={item.url} class="block py-3 font-semibold uppercase">{item.label}</a>
+          {item.children && (
+            <ul class="pl-4 border-l border-amber-600 hidden flex-col space-y-1">
+              {item.children.map((child) => (
+                <li>
+                  <a href={child.url} class="block py-2 text-sm hover:text-amber-300">{child.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
     </ul>
-    
 
-    <div class="mobile-buttons">
-      {
-        buttons.map((button) => (
-          <a href={button.href} class={button.style}>
-            {button.text}
-          </a>
-        ))
-      }
+    <div class="border-t border-amber-700 py-4 px-4">
+      {buttons.map((button) => (
+        <a href={button.href} class={`${button.style} block w-full text-center`}>{button.text}</a>
+      ))}
     </div>
   </div>
 </nav>
 
-<style>
-  :root {
-    /* === BRAND COLORS === */
-    --color-primary: #85510e;
-    --color-primary-light: #fff;
-    --color-accent: #e06900;
-    --color-highlight: #ff8904;
-
-    /* === TEXT COLORS === */
-    --color-text-light: #fff;
-    --color-text-dark: #85510e;
-    --color-text-muted: #fff;
-
-    /* === BACKGROUND & BORDER === */
-    --color-bg-light: #85510e;
-    --color-bg-blur: #ffff;
-    --color-border-light: #ddd;
-    --color-border-muted: #e5e7eb;
-
-    /* === SHADOWS === */
-    --shadow-navbar: 0 4px 8px rgba(0, 0, 0, 0.05);
-  }
-
-  .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 50;
-    display: flex;
-    justify-content: center;
-    transition: all 0.5s ease;
-  }
-  .navbar.scrolled {
-    background: var(--color-bg-blur);
-    backdrop-filter: blur(8px);
-    box-shadow: var(--shadow-navbar);
-  }
-
-  .container {
-    max-width: 80rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-  }
-
-  .nav {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .menu-item {
-    position: relative;
-    color: var(--color-text-light);
-    transition: color 0.3s ease;
-  }
-
-  .menu-item a {
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-  }
-
-  .menu-item a:hover {
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    color: var(--color-primary-light);
-  }
-
-  .menu-item a:has(+ ul > li > a.menu-link-hover) {
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    color: var(--color-primary-light);
-  }
-
-  .navbar.scrolled .menu-item {
-    color: var(--color-primary);
-  }
-
-  .navbar.scrolled .menu-item a {
-    color: var(--color-primary);
-  }
-
-  .navbar.scrolled .nav > .menu-item > a:hover {
-    color: var(--color-accent);
-  }
-
-  /* Force submenu hover to stay white when scrolled */
-  .navbar.scrolled .sub-menu li a:hover {
-    color: var(--color-text-light);
-    background: var(--color-primary);
-  }
-
-  .navbar.scrolled .nav > .menu-item > a.menu-link-hover {
-    color: var(--color-accent);
-  }
-
-  .navbar.scrolled .sub-menu li a.menu-link-hover {
-    color: var(--color-text-light);
-    background: var(--color-primary);
-  }
-
-  /* Dropdown (desktop) */
-  .sub-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 40;
-    min-width: 220px;
-
-    background: var(--color-bg-light);
-    border: 1px solid var(--color-border-light);
-    list-style: none;
-    padding: 0.5rem 0;
-
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(6px);
-    pointer-events: none;
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease,
-      visibility 0.3s step-end;
-  }
-
-  .menu-item:hover .sub-menu {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease,
-      visibility 0.3s step-start;
-  }
-
-  .menu-item {
-    position: relative;
-  }
-
-  .menu-item::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: 10px;
-    background: transparent;
-  }
-
-  /* Dropdown items */
-  .sub-menu li a {
-    display: block;
-    padding: 0.5rem 1rem;
-    white-space: nowrap;
-    color: var(--color-primary);
-    transition:
-      background 0.3s ease,
-      color 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .sub-menu li a:hover,
-  .sub-menu li a.menu-link-hover {
-    background: var(--color-primary);
-    color: var(--color-text-light);
-    transform: scale(1.05);
-  }
-
-  .buttons a {
-    margin-left: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 1.5rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .buttons a:hover {
-    filter: brightness(1.1);
-  }
-
-  .container .hamburger .hamburger-menu-x,
-  .container.open .hamburger .hamburger-menu-bars {
-    display: none;
-  }
-
-  .container.open .hamburger .hamburger-menu-x,
-  .container .hamburger .hamburger-menu-bars {
-    display: block;
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--color-text-muted);
-  }
-
-  .mobile-menu {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--color-bg-light);
-    padding: 0 1rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.5s ease;
-  }
-
-  .mobile-menu.open {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    max-height: 100vh;
-    overflow: visible;
-  }
-
-  .mobile-submenu {
-    max-height: 0;
-    overflow: hidden;
-    transition:
-      max-height 0.5s ease,
-      opacity 0.3s ease;
-    opacity: 0;
-  }
-
-  .mobile-submenu.open {
-    max-height: 20rem;
-    opacity: 1;
-  }
-
-  /* ===== MOBILE ===== */
-  @media (max-width: 768px) {
-    .nav,
-    .buttons {
-      display: none;
-    }
-
-    .hamburger {
-      display: flex;
-    }
-
-    .mobile-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: var(--color-bg-light);
-      padding: 0 16px;
-      max-height: 0;
-      overflow: hidden;
-      transition:
-        max-height 0.5s ease,
-        padding 0.3s ease;
-    }
-
-    .mobile-menu.open {
-      padding-top: 12px;
-      padding-bottom: 14px;
-      max-height: calc(100vh - 64px);
-      overflow: auto;
-    }
-
-    .mobile-item > a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 4px;
-      font-weight: 600;
-      color: var(--color-text-dark);
-    }
-
-    .mobile-item > a::after {
-      content: "▸";
-      margin-left: 0.5rem;
-      transition: transform 0.25s ease;
-    }
-
-    .mobile-item > a.open::after {
-      transform: rotate(90deg);
-    }
-
-    .mobile-submenu {
-      border-left: 2px solid var(--color-border-muted);
-      margin-left: 10px;
-      padding-left: 6px;
-    }
-
-    a:has(+ .mobile-submenu.open),
-    a:has(+ .mobile-submenu .menu-link-hover) {
-      color: var(--color-highlight);
-    }
-
-    .mobile-submenu li a {
-      display: block;
-      padding: 10px 12px 10px 24px;
-      border-radius: 6px;
-      color: var(--color-text-muted);
-    }
-
-    .mobile-submenu li a:hover,
-    .mobile-submenu li a.menu-link-hover {
-      background: var(--color-highlight);
-      color: var(--color-text-light);
-      font-weight: bold;
-    }
-
-    .mobile-buttons {
-      position: sticky;
-      bottom: 0;
-      background: var(--color-bg-light);
-      padding: 12px 0 14px;
-      border-top: 1px solid var(--color-border-muted);
-    }
-
-    .mobile-buttons a {
-      width: 100%;
-      display: block;
-      text-align: center;
-    }
-  }
-</style>
-
-
 <script type="module">
   const navbar = document.getElementById("navbar");
-  const mobileToggle = document.getElementById("mobile-toggle");
+  const toggle = document.getElementById("mobile-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
-  const menuHeaderContainer = document.querySelector("#navbar > .container");
+  const bars = document.getElementById("bars");
+  const xmark = document.getElementById("xmark");
 
-  const logo = document.getElementById("logo-default");
-  const logoBlackAndWhite = document.getElementById("logo-black-and-white");
-
-  // Switch between the black and white logo and the default logo depending on the dimensions and scroll
-  // This maintains a high contrast between the logo and the background
-  function UpdateLogo() {
-    if ((window.scrollY > 40 || window.outerWidth <= 767) && !navbar.classList.contains("scrolled")) {
-      navbar.classList.add("scrolled");
-      logoBlackAndWhite.classList.add("hidden");
-      logoBlackAndWhite.classList.remove("md:hidden", "md:block");
-      logo.classList.remove("hidden", "block", "md:hidden", "md:block");
-
-      return;
-    }
-
-    if (window.scrollY <= 40 && window.outerWidth > 767 && navbar.classList.contains("scrolled")) {
-      navbar.classList.remove("scrolled");
-      logo.classList.add("hidden");
-      logo.classList.remove("md:hidden", "md:block");
-      logoBlackAndWhite.classList.remove("hidden", "block", "md:hidden", "md:block");
+  function handleScroll() {
+    if (window.scrollY > 40) {
+      navbar.classList.add("bg-white/60", "backdrop-blur-md", "shadow-md");
+      navbar.classList.remove("bg-transparent");
+    } else {
+      navbar.classList.remove("bg-white/60", "backdrop-blur-md", "shadow-md");
+      navbar.classList.add("bg-transparent");
     }
   }
+  window.addEventListener("scroll", handleScroll);
+  handleScroll();
 
-  let scrollDebounceTimer;
-  let resizeDebounceTimer;
-
-  window.addEventListener("scroll", () => {
-    clearTimeout(scrollDebounceTimer);
-
-    setTimeout(UpdateLogo, 200);
+  toggle.addEventListener("click", () => {
+    const open = mobileMenu.classList.toggle("max-h-screen");
+    bars.classList.toggle("hidden", open);
+    xmark.classList.toggle("hidden", !open);
+    document.body.classList.toggle("overflow-hidden", open);
   });
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeDebounceTimer);
-
-    setTimeout(UpdateLogo, 200);
-  });
-
-  // Mobile menu open/close
-  mobileToggle?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("open");
-    menuHeaderContainer?.classList.toggle("open");
-    document.body.classList.toggle('overflow-hidden');
-  });
-
-  // Mobile submenu toggles (tweak: mark link .open and animate height)
-  const mobileItems = document.querySelectorAll(".mobile-item");
-  mobileItems.forEach((item) => {
-    const link = item.querySelector(":scope > a");
-    const submenu = item.querySelector(".mobile-submenu");
-    if (submenu && link) {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        const isOpen = submenu.classList.contains("open");
-
-        document.querySelectorAll(".mobile-submenu.open").forEach((openSubmenu) => {
-          if (openSubmenu !== submenu) {
-            openSubmenu.classList.remove("open");
-            openSubmenu.style.maxHeight = "0px";
-            openSubmenu.style.opacity = "0";
-
-            const openLink = openSubmenu.parentElement.querySelector(":scope > a.open");
-            if (openLink) openLink.classList.remove("open");
-          }
-        });
-
-        submenu.classList.toggle("open", !isOpen);
-        link.classList.toggle("open", !isOpen);
-
-        if (!isOpen) {
-          submenu.style.maxHeight = submenu.scrollHeight + "px";
-          submenu.style.opacity = "1";
-        } else {
-          submenu.style.maxHeight = "0px";
-          submenu.style.opacity = "0";
-        }
-      });
-    }
-  });
-  
-  document.querySelectorAll("#mobile-menu a").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const parentItem = link.closest(".mobile-item");
-      const hasSubmenu = parentItem && parentItem.querySelector(".mobile-submenu");
-
-      // If this link just toggles a submenu, do nothing here
-      if (hasSubmenu && e.target.closest("a").nextElementSibling === hasSubmenu) return;
-
-      // Close mobile menu if it's open
-      if (mobileMenu.classList.contains("open")) {
-        mobileMenu.classList.remove("open");
-        menuHeaderContainer?.classList.remove("open");
-        document.body.classList.remove("overflow-hidden");
-      }
-
-      // Smooth scroll to hash links on the same page
-      const href = link.getAttribute("href");
-      if (href && href.includes("#")) {
-        const targetId = href.split("#")[1];
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          setTimeout(() => {
-            targetEl.scrollIntoView({ behavior: "smooth" });
-          }, 150);
-        }
-      }
-    });
-  });
-
 </script>
