@@ -40,25 +40,42 @@ export const menuRight: MenuItem[] = [
 ];
 
 export const buttons: NavbarButton[] = [
-  { text: "Enroll Now", href: "/#enroll-form", style: "bg-amber-700 text-white text-lg rounded-full px-4 py-2 hover:brightness-110 transition" },
+  {
+    text: "Enroll Now",
+    href: "/#enroll-form",
+    style: "bg-amber-700 text-white text-lg rounded-full px-4 py-2 hover:brightness-110 transition",
+  },
 ];
 
 const { pathname } = Astro.props;
 ---
 
 <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
-  <div class="max-w-6xl w-full flex items-center justify-between px-4 py-2 bg-white md:bg-transparent transition-all duration-300">
-
+  <div
+    class="relative flex items-center justify-between px-4 py-2 max-w-7xl mx-auto bg-white md:bg-transparent transition-all duration-300"
+  >
     <!-- Left Menu -->
     <ul class="hidden md:flex gap-8 text-white">
       {menuLeft.map((item) => (
         <li class="relative group">
-          <a href={item.url} class="font-medium uppercase transition hover:underline hover:underline-offset-2">{item.label}</a>
+          <a
+            href={item.url}
+            class="font-medium uppercase transition hover:underline hover:underline-offset-2"
+          >
+            {item.label}
+          </a>
           {item.children && (
-            <ul class="absolute top-full left-0 min-w-[220px] bg-amber-800 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+            <ul
+              class="absolute top-full left-0 min-w-[220px] bg-amber-800 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
+            >
               {item.children.map((child) => (
                 <li>
-                  <a href={child.url} class={`block px-4 py-2 hover:bg-amber-700 transition ${child.url === pathname ? "bg-amber-700" : ""}`}>
+                  <a
+                    href={child.url}
+                    class={`block px-4 py-2 hover:bg-amber-700 transition ${
+                      child.url === pathname ? "bg-amber-700" : ""
+                    }`}
+                  >
                     {child.label}
                   </a>
                 </li>
@@ -69,54 +86,92 @@ const { pathname } = Astro.props;
       ))}
     </ul>
 
-    <!-- Logo -->
-    <a href="/" class="flex-shrink-0 w-36 md:w-52">
+    <!-- Centered Logo -->
+    <a
+      href="/"
+      class="absolute top-1 left-1/2 -translate-x-1/2 flex-shrink-0 w-36 md:w-44 flex justify-center"
+    >
       <Logo classes="block md:hidden" />
       <Logo classes="hidden md:block" blackAndWhite={true} />
     </a>
 
     <!-- Right Menu -->
-    <ul class="hidden md:flex gap-8 text-white">
-      {menuRight.map((item) => (
-        <li class="relative group">
-          <a href={item.url} class="font-medium uppercase transition hover:underline hover:underline-offset-2">{item.label}</a>
-          {item.children && (
-            <ul class="absolute top-full left-0 min-w-[220px] bg-amber-800 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-              {item.children.map((child) => (
-                <li>
-                  <a href={child.url} class={`block px-4 py-2 hover:bg-amber-700 transition ${child.url === pathname ? "bg-amber-700" : ""}`}>
-                    {child.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
-    </ul>
+    <div class="hidden md:flex items-center gap-8 text-white">
+      <ul class="flex gap-8">
+        {menuRight.map((item) => (
+          <li class="relative group">
+            <a
+              href={item.url}
+              class="font-medium uppercase transition hover:underline hover:underline-offset-2"
+            >
+              {item.label}
+            </a>
+            {item.children && (
+              <ul
+                class="absolute top-full left-0 min-w-[220px] bg-amber-800 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
+              >
+                {item.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.url}
+                      class={`block px-4 py-2 hover:bg-amber-700 transition ${
+                        child.url === pathname ? "bg-amber-700" : ""
+                      }`}
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
 
-    <!-- Buttons -->
-    <div class="hidden md:flex items-center">
+      <!-- Buttons -->
       {buttons.map((button) => (
-        <a href={button.href} class={button.style}>{button.text}</a>
+        <a href={button.href} class={button.style}>
+          {button.text}
+        </a>
       ))}
     </div>
 
     <!-- Mobile Hamburger -->
-    <button id="mobile-toggle" class="md:hidden flex flex-col gap-1 text-white focus:outline-none" aria-label="Toggle menu">
-      <svg id="bars" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
+    <button
+      id="mobile-toggle"
+      class="md:hidden flex flex-col gap-1 text-white focus:outline-none z-50"
+      aria-label="Toggle menu"
+    >
+      <svg
+        id="bars"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
         <line x1="3" x2="21" y1="6" y2="6" />
         <line x1="3" x2="21" y1="12" y2="12" />
         <line x1="3" x2="21" y1="18" y2="18" />
       </svg>
-      <svg id="xmark" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2">
+      <svg
+        id="xmark"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 hidden"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
         <path d="M6 6l12 12M18 6L6 18" />
       </svg>
     </button>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="absolute top-full left-0 w-full bg-amber-800 text-white max-h-0 overflow-hidden transition-all duration-500">
+  <div
+    id="mobile-menu"
+    class="absolute top-full left-0 w-full bg-amber-800 text-white max-h-0 overflow-hidden transition-all duration-500"
+  >
     <ul class="flex flex-col px-4 py-2 space-y-2">
       {[...menuLeft, ...menuRight].map((item) => (
         <li class="border-b border-amber-700">
