@@ -31,13 +31,13 @@ const { content = example } = Astro.props;
         <p class="mt-6 text-lg/8 text-pretty text-gray-300">
           {content.description}
         </p>
-        <div class="mt-10 flex">
-          <a href={content.button.href} class="btn-accent">
-            {content.button.text}</a
-          >
-        </div>
       </div>
+    
+      <a href={content.button.href} class="btn-accent btn-left self-start">
+          {content.button.text}</a
+      >
     </div>
+    
     <div class="flex-1 bg-amber-900 ">
       <ImageComp
         src={content.image.src}
