@@ -101,7 +101,7 @@ const { content = example } = Astro.props;
                     <p class="mt-6 text-lg/8 text-pretty text-gray-300">
                     {item.description}
                     </p>
-                    <ul class="flex flex-wrap gap-12 mx-auto">
+                    <ul class="flex justify-between gap-12">
                         {
                             item.bullets.map((bullet: any) => (
                                 <div class="hover:shadow-lg flex flex-col max-w-24">
@@ -131,7 +131,7 @@ const { content = example } = Astro.props;
                         }
                     </ul>
                     <div class="mt-10 flex">
-                        <a href={item.button.href} class="btn-accent ">
+                        <a href={item.button.href} class="btn-accent btn-middle ">
                             {item.button.text}
                         </a>
                     </div>
@@ -163,7 +163,7 @@ const { content = example } = Astro.props;
                         item.descriptions.map((description: any) =>(<p class="mt-2 text-base text-pretty text-gray-300">{description}</p>)) 
                     }
                     <div class="mt-10 flex">
-                        <a href={item.button.href} class="btn-accent">
+                        <a href={item.button.href} class="btn-accent btn-middle">
                             {item.button.text}
                         </a>
                     </div>
@@ -187,7 +187,7 @@ const { content = example } = Astro.props;
                     {item.description}
                     </p>
 
-                    <ul class="flex flex-wrap gap-12 mx-auto">
+                    <ul class="flex justify-between gap-12 py-12">
                         {
                             item.bullets.map((bullet: any) => (
                                 <div class="hover:shadow-lg flex flex-col max-w-24">
@@ -218,7 +218,7 @@ const { content = example } = Astro.props;
                     </ul>
                     
                     <div class="mt-10 flex">
-                    <a href={item.button.href} class="btn-accent">
+                    <a href={item.button.href} class="btn-accent btn-middle">
                         {item.button.text}</a>
                     </div>
                 </div>
@@ -245,7 +245,7 @@ const { content = example } = Astro.props;
                     <p class="mt-6 text-lg/8 text-pretty text-gray-300">
                     {item.description}
                     </p>
-                    <ul class="flex flex-wrap gap-2 py-6 w-full">
+                    <ul class="flex justify-between gap-2 py-6 w-full">
                         {
                             item.bullets.map((bullet: any) => (
                                 <div class="hover:shadow-lg flex flex-col items-center w-1/4 ">
@@ -275,7 +275,7 @@ const { content = example } = Astro.props;
                         }
                     </ul>
                     <div class="mt-10 flex">
-                        <a href={item.button.href} class="btn-accent">
+                        <a href={item.button.href} class="btn-accent btn-middle">
                             {item.button.text}
                         </a>
                     </div>
