@@ -27,8 +27,8 @@ const { content = headerContent } = Astro.props;
 
 ---
 <div class="bg-amber-900">
-  <div class="relative isolate px-6 pt-14 lg:px-8 ">
-    <div aria-hidden="true" class="absolute inset-x-0 -top-20 -z-10 transform-gpu overflow-hidden h-[screen] ">
+  <div class="relative isolate px-6 pt-14 lg:px-8 h-[screen] overflow-hidden">
+    <div aria-hidden="true" class="absolute inset-x-0 -top-20 xl:-top-[70%] -z-10">
         <ImageComp 
             src={content.image.src}
             alt={content.image.alt}
