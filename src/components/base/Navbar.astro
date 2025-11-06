@@ -53,10 +53,10 @@ const { pathname } = Astro.props;
 <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
   <!-- Desktop Menu -->
   <div
-    class="relative flex items-center gap-18 justify-center px-4 py-2 max-w-7xl mx-auto bg-white md:bg-transparent transition-all duration-300 "
+    class="relative flex items-center justify-center px-4 py-2 max-w-7xl mx-auto bg-white md:bg-transparent transition-all duration-300 "
   >
     <!-- Left Menu -->
-    <ul class="hidden mt-18 md:flex gap-8 text-white mr-20 ">
+    <ul class="hidden pr-34 mt-18  md:flex gap-8 text-white bg-white/15 py-14 px-4 rounded-bl-full rounded-tl-full ">
       {menuLeft.map((item) => (
         <li class="relative group">
           <a
@@ -73,7 +73,7 @@ const { pathname } = Astro.props;
                 <li>
                   <a
                     href={child.url}
-                    class={`block px-4 py-2 hover:bg-amber-700 transition ${
+                    class={`block px-4 hover:bg-amber-700 transition ${
                       child.url === pathname ? "bg-amber-700" : ""
                     }`}
                   >
@@ -90,17 +90,17 @@ const { pathname } = Astro.props;
     <!-- Centered Logo -->
     <a
       href="/"
-      class="absolute top-1 left-1/2 -translate-x-1/2 shrink-0 w-36 md:w-44 flex justify-center"
+      class="absolute top-14 left-1/2 -translate-x-1/2 shrink-0 w-36 md:w-44 flex justify-center"
     >
       <Logo classes="block md:hidden" />
       <Logo classes="hidden md:block" blackAndWhite={true} />
     </a>
 
     <!-- Logo size placeholder -->
-    <div class="w-28"></div>
+    <!-- <div class="w-58 mt-18 bg-white/15 "></div> -->
 
     <!-- Right Menu -->
-    <div class="hidden mt-18 md:flex items-center gap-8 text-white -ml-20">
+    <div class="hidden pl-28 mt-18 md:flex items-center gap-8 text-white  py-12 bg-white/15 px-4 rounded-br-full rounded-tr-full">
       <ul class="flex gap-8">
         {menuRight.map((item) => (
           <li class="relative group">
@@ -202,23 +202,23 @@ const { pathname } = Astro.props;
 </nav>
 
 <script type="module">
-  const navbar = document.getElementById("navbar");
+  // const navbar = document.getElementById("navbar");
   const toggle = document.getElementById("mobile-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
   const bars = document.getElementById("bars");
   const xmark = document.getElementById("xmark");
 
-  function handleScroll() {
-    if (window.scrollY > 40) {
-      navbar.classList.add("bg-white/60", "backdrop-blur-md", "shadow-md");
-      navbar.classList.remove("bg-transparent");
-    } else {
-      navbar.classList.remove("bg-white/60", "backdrop-blur-md", "shadow-md");
-      navbar.classList.add("bg-transparent");
-    }
-  }
-  window.addEventListener("scroll", handleScroll);
-  handleScroll();
+  // function handleScroll() {
+  //   if (window.scrollY > 40) {
+  //     navbar.classList.add("bg-white/60", "backdrop-blur-md", "shadow-md");
+  //     navbar.classList.remove("bg-transparent");
+  //   } else {
+  //     navbar.classList.remove("bg-white/60", "backdrop-blur-md", "shadow-md");
+  //     navbar.classList.add("bg-transparent");
+  //   }
+  // }
+  // window.addEventListener("scroll", handleScroll);
+  // handleScroll();
 
   toggle.addEventListener("click", () => {
     const open = mobileMenu.classList.toggle("max-h-screen");
