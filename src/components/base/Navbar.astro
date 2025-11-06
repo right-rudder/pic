@@ -43,67 +43,24 @@ export const buttons: NavbarButton[] = [
   {
     text: `Enroll Now`,
     href: "/#enroll-form",
-    style: "bg-primary-500 text-white text-lg rounded-tr-full rounded-br-full px-4 py-2 hover:brightness-110 transition",
+    style:
+      "bg-primary-500 text-white text-lg rounded-tr-full rounded-br-full px-4 py-2 hover:brightness-110 transition",
   },
 ];
 
 const { pathname } = Astro.props;
 ---
 
-<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
-  <!-- Desktop Menu -->
-  <div
-    class="relative flex items-center justify-center px-4 py-2 max-w-7xl mx-auto bg-white md:bg-transparent transition-all duration-300 "
-  >
-    <!-- Left Menu -->
-    <ul class="hidden max-h-12 pr-34 mt-1 md:flex gap-8 text-white bg-white/15 py-14 px-4 rounded-bl-full rounded-tl-full ">
-      {menuLeft.map((item) => (
-        <li class="relative group">
-          <a
-            href={item.url}
-            class="font-medium uppercase transition hover:underline hover:underline-offset-2"
-          >
-            {item.label}
-          </a>
-          {item.children && (
-            <ul
-              class="absolute top-full left-0 min-w-[220px] bg-primary-500 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
-            >
-              {item.children.map((child) => (
-                <li>
-                  <a
-                    href={child.url}
-                    class={`block px-4 hover:bg-amber-700 transition ${
-                      child.url === pathname ? "bg-amber-700" : ""
-                    }`}
-                  >
-                    {child.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
-    </ul>
-
-    <!-- Centered Logo -->
-    <a
-      href="/"
-      class="absolute top-1 left-1/2 -translate-x-1/2 shrink-0 w-36 md:w-44 flex justify-center"
-    >
-      <Logo classes="block md:hidden" />
-      <Logo classes="hidden md:block" blackAndWhite={true} />
-    </a>
-
-    <!-- Logo size placeholder -->
-    <!-- <div class="w-58 mt-18 bg-white/15 "></div> -->
-
-    <!-- Right Menu -->
-    <div class="hidden pl-28 mt-3 max-h-12 md:flex items-center gap-8 text-white  py-12 bg-white/15 px-4 rounded-br-full rounded-tr-full">
-      <ul class="flex gap-8">
-        {menuRight.map((item) => (
-          <li class="relative group">
+<nav id="navbar" class="fixed top-10 w-full z-50 transition-all duration-500">
+  <div class="relative flex items-center justify-center bg-white/20 backdrop-blur-sm  rounded-full px-4 py-3 max-w-7xl mx-auto">
+    <!-- Wing Menus Container -->
+    <div class="hidden md:flex items-center justify-between w-full relative">
+      <!-- Left Wing -->
+      <ul
+        class="flex items-center gap-8 text-white "
+      >
+        {menuLeft.map((item) => (
+          <li class="relative group flex items-center">
             <a
               href={item.url}
               class="font-medium uppercase transition hover:underline hover:underline-offset-2"
@@ -132,12 +89,56 @@ const { pathname } = Astro.props;
         ))}
       </ul>
 
-      <!-- Buttons -->
-      {buttons.map((button) => (
-        <a href={button.href} class={button.style}>
-          {button.text}
-        </a>
-      ))}
+      <!-- Centered Logo (overlapping) -->
+      <a
+        href="/"
+        class="absolute left-1/2 -translate-x-1/2 shrink-0 flex justify-center items-center z-10"
+      >
+        <Logo classes="w-28 md:w-36 drop-shadow-lg" blackAndWhite={true} />
+      </a>
+
+      <!-- Right Wing -->
+      <div
+        class="flex items-center gap-8 text-white "
+      >
+        <ul class="flex items-center gap-8">
+          {menuRight.map((item) => (
+            <li class="relative group flex items-center">
+              <a
+                href={item.url}
+                class="font-medium uppercase transition hover:underline hover:underline-offset-2"
+              >
+                {item.label}
+              </a>
+              {item.children && (
+                <ul
+                  class="absolute top-full left-0 min-w-[220px] bg-primary-500 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
+                >
+                  {item.children.map((child) => (
+                    <li>
+                      <a
+                        href={child.url}
+                        class={`block px-4 py-2 hover:bg-amber-700 transition ${
+                          child.url === pathname ? "bg-amber-700" : ""
+                        }`}
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        <!-- Buttons -->
+        {buttons.map((button) => (
+          <a href={button.href} class={button.style}>
+            {button.text}
+          </a>
+        ))}
+      </div>
     </div>
 
     <!-- Mobile Hamburger -->
@@ -202,23 +203,10 @@ const { pathname } = Astro.props;
 </nav>
 
 <script type="module">
-  // const navbar = document.getElementById("navbar");
   const toggle = document.getElementById("mobile-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
   const bars = document.getElementById("bars");
   const xmark = document.getElementById("xmark");
-
-  // function handleScroll() {
-  //   if (window.scrollY > 40) {
-  //     navbar.classList.add("bg-white/60", "backdrop-blur-md", "shadow-md");
-  //     navbar.classList.remove("bg-transparent");
-  //   } else {
-  //     navbar.classList.remove("bg-white/60", "backdrop-blur-md", "shadow-md");
-  //     navbar.classList.add("bg-transparent");
-  //   }
-  // }
-  // window.addEventListener("scroll", handleScroll);
-  // handleScroll();
 
   toggle.addEventListener("click", () => {
     const open = mobileMenu.classList.toggle("max-h-screen");
