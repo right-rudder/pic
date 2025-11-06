@@ -17,9 +17,9 @@ const { blackAndWhite = false, classes = "" } = Astro.props;
 }
 {
   (!blackAndWhite) &&
-    <div  class={`${classes}`} id="logo-default">
+    <div  class={`${classes} rounded-full `} id="logo-default">
       <ImageComp 
-        src={"/src/assets/LogoPIlotInstructionalCenter.png"}
+        src={"/src/assets/LogoPIlotInstructionalCenterColor.png"}
         alt={"Logo for Pilot Instructional Center"}
         classes="object-cover"
       />
