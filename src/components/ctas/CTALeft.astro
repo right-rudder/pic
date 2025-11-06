@@ -18,10 +18,10 @@ const example = {
 const { content = example } = Astro.props;
 ---
 
-<div class="py-12 bg-amber-900">
+<div class="py-12 bg-primary-300">
   <div class="mx-auto flex max-w-7xl flex-col overflow-hidden md:flex-row">
     
-    <div class="bg-amber-900 flex-1 text-white">
+    <div class=" flex-1 text-white">
       <div class="flex flex-col px-8 py-12 sm:px-12 lg:py-20">
         <h2
           class="text-4xl font-semibold tracking-tight text-pretty sm:text-5xl"
@@ -38,7 +38,7 @@ const { content = example } = Astro.props;
       >
     </div>
     
-    <div class="flex-1 bg-amber-900 ">
+    <div class="flex-1 ">
       <ImageComp
         src={content.image.src}
         alt={content.image.alt}

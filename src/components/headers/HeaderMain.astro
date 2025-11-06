@@ -26,7 +26,7 @@ const headerContent = {
 const { content = headerContent } = Astro.props;
 
 ---
-<div class="bg-amber-900">
+<div class="bg-primary-500">
   <div class="relative isolate px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 min-h-screen overflow-hidden">
     <!-- Background image -->
     <div aria-hidden="true" class="absolute inset-0 -z-10">
@@ -35,7 +35,7 @@ const { content = headerContent } = Astro.props;
         alt={content.image.alt}
         classes="object-cover w-full h-full"
       />
-      <div class="absolute inset-0 bg-amber-950/60"></div>
+      <div class="absolute inset-0 bg-primary-300/60"></div>
     </div>
 
     <!-- Content -->
@@ -43,7 +43,7 @@ const { content = headerContent } = Astro.props;
       
       <!-- UpperHeader  -->
       <div class="flex justify-center mb-6 sm:mb-10">
-        <div class="relative rounded-full px-4 py-1.5 text-sm sm:text-base bg-white text-amber-900 ring-1 ring-amber-800/70 hover:ring-amber-900/80 transition">
+        <div class="relative rounded-full px-4 py-1.5 text-sm sm:text-base bg-white text-primary-800 ring-1 ring-amber-800/70 hover:ring-amber-900/80 transition">
           {content.upperHeader}
         </div>
       </div>
@@ -61,7 +61,7 @@ const { content = headerContent } = Astro.props;
       <!-- CTA -->
       <!--
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-        <a href="#" class="rounded-md bg-amber-700 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-amber-800 transition">Get started</a>
+        <a href="#" class="rounded-md bg-amber-700 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-primary-500 transition">Get started</a>
         <a href="#" class="text-sm font-semibold text-white hover:text-amber-200 transition">Learn more →</a>
       </div>
       -->

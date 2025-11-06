@@ -43,7 +43,7 @@ export const buttons: NavbarButton[] = [
   {
     text: `Enroll Now`,
     href: "/#enroll-form",
-    style: "bg-amber-800 text-white text-lg rounded-tr-full rounded-br-full px-4 py-2 hover:brightness-110 transition",
+    style: "bg-primary-500 text-white text-lg rounded-tr-full rounded-br-full px-4 py-2 hover:brightness-110 transition",
   },
 ];
 
@@ -67,7 +67,7 @@ const { pathname } = Astro.props;
           </a>
           {item.children && (
             <ul
-              class="absolute top-full left-0 min-w-[220px] bg-amber-800 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
+              class="absolute top-full left-0 min-w-[220px] bg-primary-500 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
             >
               {item.children.map((child) => (
                 <li>
@@ -112,7 +112,7 @@ const { pathname } = Astro.props;
             </a>
             {item.children && (
               <ul
-                class="absolute top-full left-0 min-w-[220px] bg-amber-800 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
+                class="absolute top-full left-0 min-w-[220px] bg-primary-500 text-white rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
               >
                 {item.children.map((child) => (
                   <li>
@@ -174,7 +174,7 @@ const { pathname } = Astro.props;
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="absolute top-full left-0 w-full bg-amber-800 text-white max-h-0 overflow-hidden transition-all duration-500"
+    class="absolute top-full left-0 w-full bg-primary-500 text-white max-h-0 overflow-hidden transition-all duration-500"
   >
     <ul class="flex flex-col px-4 py-2 space-y-2">
       {[...menuLeft, ...menuRight].map((item) => (

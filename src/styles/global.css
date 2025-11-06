@@ -1,6 +1,12 @@
 @import "tailwindcss";
-
 @tailwind utilities;
+
+@theme {
+  --color-primary-300: #745e4d;
+  --color-primary-400: #dcc1a6;
+  --color-primary-600: #5d4d40;
+  --color-primary-800: #423731;
+}
 
 a {
   text-decoration: none;
@@ -15,7 +21,7 @@ body {
 }
 
 .btn-accent {
-  @apply text-center tracking-wide font-bold text-2xl py-2 bg-amber-950  text-white  hover:bg-white ring-8 ring-amber-900 hover:text-amber-900  duration-300 ease-in-out;
+  @apply text-center tracking-wide font-bold text-2xl py-2  bg-primary-600 ring-3 ring-primary-300 text-white  duration-300 ease-in-out;
 }
 
 .btn-left {
