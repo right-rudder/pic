@@ -6,6 +6,40 @@ const example = [
   {
     image: {
     src: "/src/assets/stock-man-airplanes-museum.jpg",
+      alt: "Flight instructor and student pilot in cockpit",
+    },
+    upperHeader: "WHY CHOOSE PILOT INSTRUCTIONAL CENTER",
+    title: "Expert Instructors. Real-World Training. Proven Results.",
+    description:
+      "At Pilot Instructional Center, we combine experience, integrity, and advanced training methods to help every student succeed. Our instructors are jet-rated professionals with years of real-world flight experience who are passionate about helping you become a confident, capable pilot.",
+    bullets: [
+      {
+        icon: "M5 9V6.8c0-.44.36-.8.8-.8h16.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H20M2.8 9h16.4a.8.8 0 0 1 .8.8v8.4a.8.8 0 0 1-.8.8H2.8a.8.8 0 0 1-.8-.8V9.8a.8.8 0 0 1 .8-.8Zm9.2 5a1 1 0 1 1-2 0a1 1 0 0 1 2 0Z",
+        title: "Experienced Instructors",
+        description:
+          "Train with senior instructors who bring years of flight and jet experience, ensuring you receive mentorship that goes beyond the basics.",
+      },
+      {
+        icon: "M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Zm1 10h-2V6h2v6Z",
+        title: "Safety & Integrity First",
+        description:
+          "Unlike schools that rush students or cut corners, PIC prioritizes professionalism, safety, and honesty in every stage of training.",
+      },
+      {
+        icon: "M3 6h18v2H3V6Zm0 4h18v2H3v-2Zm0 4h12v2H3v-2Z",
+        title: "Tailored Training Paths",
+        description:
+          "From Private Pilot to Commercial and CFI programs, our structured yet flexible approach adapts to your pace, goals, and budget.",
+      },
+    ],
+    button: {
+      text: "Explore Our Programs",
+      href: "/programs",
+    },
+  },
+  {
+    image: {
+    src: "/src/assets/stock-man-airplanes-museum.jpg",
       alt: "Student pilots preparing for flight at Pilot Instructional Center",
     },
     upperHeader: "WHY BECOME A PILOT",
@@ -42,40 +76,6 @@ const example = [
       href: "/contact",
     },
   },
-  {
-    image: {
-    src: "/src/assets/stock-man-airplanes-museum.jpg",
-      alt: "Flight instructor and student pilot in cockpit",
-    },
-    upperHeader: "WHY CHOOSE PILOT INSTRUCTIONAL CENTER",
-    title: "Expert Instructors. Real-World Training. Proven Results.",
-    description:
-      "At Pilot Instructional Center, we combine experience, integrity, and advanced training methods to help every student succeed. Our instructors are jet-rated professionals with years of real-world flight experience who are passionate about helping you become a confident, capable pilot.",
-    bullets: [
-      {
-        icon: "M5 9V6.8c0-.44.36-.8.8-.8h16.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H20M2.8 9h16.4a.8.8 0 0 1 .8.8v8.4a.8.8 0 0 1-.8.8H2.8a.8.8 0 0 1-.8-.8V9.8a.8.8 0 0 1 .8-.8Zm9.2 5a1 1 0 1 1-2 0a1 1 0 0 1 2 0Z",
-        title: "Experienced Instructors",
-        description:
-          "Train with senior instructors who bring years of flight and jet experience, ensuring you receive mentorship that goes beyond the basics.",
-      },
-      {
-        icon: "M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Zm1 10h-2V6h2v6Z",
-        title: "Safety & Integrity First",
-        description:
-          "Unlike schools that rush students or cut corners, PIC prioritizes professionalism, safety, and honesty in every stage of training.",
-      },
-      {
-        icon: "M3 6h18v2H3V6Zm0 4h18v2H3v-2Zm0 4h12v2H3v-2Z",
-        title: "Tailored Training Paths",
-        description:
-          "From Private Pilot to Commercial and CFI programs, our structured yet flexible approach adapts to your pace, goals, and budget.",
-      },
-    ],
-    button: {
-      text: "Explore Our Programs",
-      href: "/programs",
-    },
-  },
 ];
 
 
@@ -87,43 +87,8 @@ const { content = example } = Astro.props;
   {
     content.map((item: any, index: number) => (
         index % 2 === 0 
-        ? (   
-            // <TextIcons content={item}/>
-
-        <div class="mx-auto flex max-w-7xl flex-col overflow-hidden md:flex-row py-12 ">
-            <div class="w-1/3">
-                <ImageComp
-                    src={item.image.src}
-                    alt={item.image.alt}
-                    classes="object-cover h-full w-full rounded-tr-full rounded-br-full"
-                />
-            </div>
-            <div class=" flex-1 text-white">
-                <div class="flex flex-col px-8 py-12 sm:px-12 lg:py-20 text-right items-end">
-                    <span>
-                        {item.upperHeader}
-                    </span>
-                    <h2
-                    class="text-4xl font-semibold tracking-tight text-pretty sm:text-5xl"
-                    >
-                    {item.title}
-                    </h2>
-                    <p class="mt-6 text-lg/8 text-pretty text-gray-300">
-                    {item.description}
-                    </p>
-                    {
-                        item.descriptions.map((description: any) =>(<p class="mt-2 text-base text-pretty text-gray-300">{description}</p>)) 
-                    }
-                    <div class="mt-10 flex">
-                        <a href={item.button.href} class="btn-accent btn-middle">
-                            {item.button.text}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        ) 
-        : (
+        ? 
+        (
         <div class="mx-auto flex max-w-7xl flex-col overflow-hidden md:flex-row">
             <div class=" flex-1 text-white">
                 <div class="flex flex-col px-8 py-12 sm:px-12 lg:py-20">
@@ -234,7 +199,44 @@ const { content = example } = Astro.props;
                 </div>
             </div>
         </div> 
-        ) 
+        )  
+        : 
+        (   
+            // <TextIcons content={item}/>
+
+        <div class="mx-auto flex max-w-7xl flex-col overflow-hidden md:flex-row py-12 ">
+            <div class="w-1/3">
+                <ImageComp
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    classes="object-cover h-full w-full rounded-tr-full rounded-br-full"
+                />
+            </div>
+            <div class=" flex-1 text-white">
+                <div class="flex flex-col px-8 py-12 sm:px-12 lg:py-20 text-right items-end">
+                    <span>
+                        {item.upperHeader}
+                    </span>
+                    <h2
+                    class="text-4xl font-semibold tracking-tight text-pretty sm:text-5xl"
+                    >
+                    {item.title}
+                    </h2>
+                    <p class="mt-6 text-lg/8 text-pretty text-gray-300">
+                    {item.description}
+                    </p>
+                    {
+                        item.descriptions.map((description: any) =>(<p class="mt-2 text-base text-pretty text-gray-300">{description}</p>)) 
+                    }
+                    <div class="mt-10 flex">
+                        <a href={item.button.href} class="btn-accent btn-middle">
+                            {item.button.text}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        )
     ))
   }
   <div>
