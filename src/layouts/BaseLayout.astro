@@ -6,15 +6,9 @@ import { SITE_TITLE, SITE_DESCRIPTION, KEYWORDS } from "../data/consts";
 import Navbar from "../components/base/Navbar.astro";
 // Supports weights 400-900
 import '@fontsource-variable/playfair-display';
+// Supports weights 200-900
+import '@fontsource-variable/crimson-pro';
 
-// Supports weights 400-900
-// import '@fontsource-variable/orbitron';
-// Supports weights 100-800
-// import '@fontsource-variable/jetbrains-mono';
-// Supports weights 100-900
-// import '@fontsource-variable/roboto';
-// import { getBreadcrumbsForPath } from "../utils/breadcrumbs";
-// import '@fontsource-variable/raleway';
 
 const { pathname } = Astro.url;
 const { siteTitle, siteDescription, siteImage, siteKeywords, customBreadcrumbs } = Astro.props;
