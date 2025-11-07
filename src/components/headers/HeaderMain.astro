@@ -26,7 +26,7 @@ const headerContent = {
 const { content = headerContent } = Astro.props;
 
 ---
-<div class="bg-primary-500">
+<div class="bg-primary-500 text-center">
   <div class="relative isolate px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 min-h-screen xl:min-h-[720px] overflow-hidden py-12 lg:py-24">
     <!-- Background image -->
     <div aria-hidden="true" class="absolute inset-0 -z-10">
@@ -39,14 +39,14 @@ const { content = headerContent } = Astro.props;
     </div>
 
     <!-- Content -->
-    <div class="relative mx-auto md:mt-22 max-w-4xl px-6 py-12 sm:py-16 lg:py-20 bg-stone-100/10 backdrop-blur-sm rounded-3xl sm:rounded-full shadow-lg">
+    <div class="relative flex flex-col items-center mx-auto md:mt-22 max-w-4xl px-6 py-12 sm:py-16 lg:py-20 bg-stone-100/10 backdrop-blur-sm rounded-3xl sm:rounded-full shadow-lg">
       
       <!-- UpperHeader  -->
-      <div class="flex justify-center mb-6 sm:mb-10">
+      <a class="flex justify-center mb-6 sm:mb-10 max-w-44 lg:max-w-none" href="#lllllllllllllllllllllllllllllllllllllllllllllll">
         <div class="relative rounded-full px-4 py-1.5 text-sm sm:text-base bg-stone-100 text-primary-800 ring-1 ring-amber-800/70 hover:ring-amber-900/80 transition">
           {content.upperHeader}
         </div>
-      </div>
+      </a>
 
       <!-- Main text -->
       <div class="text-center">
