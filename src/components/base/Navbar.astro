@@ -55,6 +55,7 @@ const { pathname } = Astro.props;
 ---
 
 <nav id="navbar" class="fixed top-10 w-full z-50 transition-all duration-500">
+  <!-- Desktop Menu -->
   <div class="relative flex items-center justify-center bg-primary-800/40 backdrop-blur-2xl  rounded-full px-4 py-3 max-w-7xl mx-auto">
     <!-- Wing Menus Container -->
     <div class="hidden md:flex items-center justify-around w-full relative">
@@ -178,17 +179,25 @@ const { pathname } = Astro.props;
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="absolute top-full left-0 w-full bg-primary-600 text-white max-h-0 overflow-hidden transition-all duration-500"
+    class="absolute top-full left-0 w-full bg-primary-800 text-white max-h-0 overflow-hidden transition-all duration-500"
   >
+    <div class="border-t border-primary-300 py-4 px-4">
+      
+      <a href="/" class="w-12">
+        <Logo classes="max-w-24 mx-auto bg-white rounded-full" />
+      </a>
+      
+    </div>
+
     <ul class="flex flex-col px-4 py-2 space-y-2">
       {[...menuLeft, ...menuRight].map((item) => (
-        <li class="border-b border-amber-700">
+        <li class="border-b border-primary-400">
           <a href={item.url} class="block py-3 font-semibold uppercase">{item.label}</a>
           {item.children && (
-            <ul class="pl-4 border-l border-amber-600 hidden flex-col space-y-1">
+            <ul class="pl-4 border-l border-primary-300 hidden flex-col space-y-1">
               {item.children.map((child) => (
                 <li>
-                  <a href={child.url} class="block py-2 text-sm hover:text-amber-300">{child.label}</a>
+                  <a href={child.url} class="block py-2 text-sm ">{child.label}</a>
                 </li>
               ))}
             </ul>
@@ -197,9 +206,9 @@ const { pathname } = Astro.props;
       ))}
     </ul>
 
-    <div class="border-t border-amber-700 py-4 px-4">
+    <div class="border-t border-primary-300 py-4 px-4">
       {buttons.map((button) => (
-        <a href={button.href} class={`${button.style} block w-full text-center`}>{button.text}</a>
+        <a href={button.href} class={`${button.style} btn-accent btn-middle block w-full text-center`}>{button.text}</a>
       ))}
     </div>
   </div>
