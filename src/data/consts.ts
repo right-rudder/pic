@@ -70,7 +70,7 @@ export const COMPANY_NAME_CAPS = "PILOT INSTRUCTIONAL CENTER";
 export const COMPANY_NICKNAME = "PIC";
 export const LOGO_PRIMARY = "";
 export const LOGO_SECONDARY = "";
-export const PHONE_NUMBER = "";
+export const PHONE_NUMBER = "+1 (999) 777 1313";
 export const ADDRESS_LINE_1 = "280 Gardner Dr";
 export const ADDRESS_LINE_2 = "";
 export const ADDRESS = "280 Gardner Dr, New Century, KS 66031, USA";
@@ -80,7 +80,7 @@ export const ADDRESS_ZIP = "66031";
 export const AIRPORT = "";
 export const AIRPORT_CODE = "";
 export const GMAPS = "";
-export const EMAIL_ADDRESS = "";
+export const EMAIL_ADDRESS = "info@pic.com";
 export const FACEBOOK_URL = "";
 export const INSTAGRAM_URL = "";
 export const LINKEDIN_URL = "";
@@ -97,8 +97,8 @@ export const LOCATIONS = [
     state: "KS",
     zip: "66031",
     gMaps: "",
-    phone: "",
-    forwardPhone: "",
+    phone: "+1 000-0000",
+    forwardPhone: "+1 000-0000",
   },
 ];
 
