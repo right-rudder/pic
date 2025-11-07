@@ -19,8 +19,11 @@ export const menuLeft: MenuItem[] = [
     label: "Pilot Training",
     url: "/flight-training",
     children: [
-      { label: "Private Pilot Certificate", url: "/flight-training/private-pilot-certificate" },
-      { label: "Fear of Flying", url: "/flight-training/fear-of-flying" },
+      { label: "Private Pilot Certificate", url: "#" },
+      { label: "Commercial Pilot Certificate", url: "#" },
+      { label: "Instrument Rating", url: "#" },
+      { label: "CFI", url: "#" },
+      { label: "CFII", url: "#" },
     ],
   },
 ];
@@ -31,8 +34,8 @@ export const menuRight: MenuItem[] = [
     url: "/about-us",
     children: [
       { label: "About Us", url: "/about-us" },
-      { label: "Team", url: "/about-us/team" },
-      { label: "FAQ", url: "/about-us/faq" },
+      { label: "Our Team", url: "/about-us/team" },
+      { label: "FAQs", url: "/about-us/faq" },
       { label: "Blog", url: "/blog" },
       { label: "Contact Us", url: "/contact" },
     ],
@@ -44,7 +47,7 @@ export const buttons: NavbarButton[] = [
     text: `Enroll Now`,
     href: "/#enroll-form",
     style:
-      "bg-primary-600 text-white text-lg rounded-full px-4 py-2 hover:brightness-110 transition",
+      "bg-primary-600 text-white text-2xl rounded-full px-6 py-1 hover:brightness-110 transition",
   },
 ];
 
@@ -52,7 +55,7 @@ const { pathname } = Astro.props;
 ---
 
 <nav id="navbar" class="fixed top-10 w-full z-50 transition-all duration-500">
-  <div class="relative flex items-center justify-center bg-stone-100/20 backdrop-blur-sm  rounded-full px-4 py-3 max-w-7xl mx-auto">
+  <div class="relative flex items-center justify-center bg-primary-800/40 backdrop-blur-2xl  rounded-full px-4 py-3 max-w-7xl mx-auto">
     <!-- Wing Menus Container -->
     <div class="hidden md:flex items-center justify-around w-full relative">
       <!-- Left Wing -->
@@ -60,7 +63,7 @@ const { pathname } = Astro.props;
         class="flex items-center gap-8 text-white "
       >
         {menuLeft.map((item) => (
-          <li class="relative group flex items-center">
+          <li class="relative group flex items-center font-semibold text-xl text-center">
             <a
               href={item.url}
               class="font-medium uppercase transition hover:underline hover:underline-offset-2"
@@ -103,7 +106,7 @@ const { pathname } = Astro.props;
       >
         <ul class="flex items-center gap-8">
           {menuRight.map((item) => (
-            <li class="relative group flex items-center">
+            <li class="relative group flex items-center font-semibold text-xl text-center">
               <a
                 href={item.url}
                 class="font-medium uppercase transition hover:underline hover:underline-offset-2"
