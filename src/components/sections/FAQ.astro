@@ -1,0 +1,94 @@
+---
+const faqExample = { 
+    upperHeading: "FAQs",
+    title: "Frequently asked questions",
+    questions:
+    [
+        {
+            question: "Why choose Pilot Instructional Center for flight training in Kansas City?",
+            answer:
+            "Pilot Instructional Center (PIC) stands out for its team of senior instructors with real-world jet experience and a passion for helping students succeed. Our training programs emphasize safety, integrity, and personalized instruction—offering a higher level of mentorship than large, fast-paced schools. Located in Kansas City, PIC provides an ideal balance of professional standards, accessible airspace, and a supportive learning environment.",
+        },
+        {
+            question: "What can I expect from flight training at Pilot Instructional Center?",
+            answer:
+            "At PIC, students receive individualized attention from instructors who genuinely care about their progress. Training covers everything from Private Pilot basics to advanced Instrument and Commercial ratings. You’ll fly modern aircraft, gain simulator experience, and develop strong decision-making skills through structured lessons and mentorship. Whether your goal is recreational flying or a professional career, PIC prepares you for success in real-world aviation.",
+        },
+        {
+            question: "What are the requirements to start flight training at PIC?",
+            answer:
+            "No prior flight experience is needed to begin. Students must be at least 17 years old for a Private Pilot License, hold an FAA medical certificate (Class 2 or higher), and be proficient in English. Our team helps guide new students through each step—from medical certification to enrollment—ensuring a smooth and supportive start to your training journey.",
+        },
+        {
+            question: "Does Pilot Instructional Center offer financing or flexible payment options?",
+            answer:
+            "Yes. PIC partners with aviation financing programs to make flight training more accessible for motivated students. We also offer pay-as-you-go options, allowing you to progress at your own pace while managing costs effectively. Our team can assist you in finding the best plan based on your goals and financial situation.",
+        },
+        {
+            question: "How long does it take to earn a pilot license at PIC?",
+            answer:
+            "Training time varies depending on your schedule, weather, and how frequently you fly. Dedicated students can complete their Private Pilot License in as little as 2–3 months, while others may take 6–12 months on a part-time basis. Our experienced instructors help you stay on track with a structured plan designed around your availability and goals.",
+        },
+    ],
+    buttons: [
+        {
+            name: "Contact us",
+            link: "/contact-us",
+            primary: true,
+        },
+        // {
+        //     name: "Schedule a Discovery Flight",
+        //     link: "/discovery-flight",
+        //     primary: true,
+        // },
+    ],
+};
+
+const { content = faqExample } = Astro.props;
+---
+
+<div class="bg-primary-800" id="faq">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
+    <p class="mx-auto mt-12 uppercase text-lg lg:text-xl font-title font-bold tracking-tight text-primary-300">{content.upperHeading}</p>
+    <h2 class="mx-auto mb-3 capitalize text-3xl lg:text-5xl font-title font-bold tracking-tight text-white">{content.title}</h2>
+    <dl class="mt-20 divide-y divide-white/35">
+      {
+        content.questions.map((question:any) => (
+        <div class="py-8 first:pt-0 last:pb-0 lg:grid lg:grid-cols-12 lg:gap-8">
+          <dt class="text-base/7 font-semibold text-gray-200 lg:col-span-5">
+            {question.question}
+          </dt>
+          <dd class="mt-4 lg:col-span-7 lg:mt-0">
+            <p class="text-base/7 text-gray-400">
+              {question.answer}
+            </p>
+          </dd>
+        </div>
+        ))
+      }
+    </dl>
+    
+    <div class="mx-auto max-w-7xl px-6 py-12 sm:py-32 lg:px-8 lg:py-20">
+      <h3
+        class="text-3xl font-semibold tracking-tight text-gray-200 sm:text-5xl"
+      >
+        Still have questions?
+      </h3>
+
+      <div
+        class="mt-6 lg:mt-20 flex flex-wrap justify-start align-middle items-center gap-6 z-10 animate-slow-fade"
+      >
+        {
+          content.buttons.map((btn:any) => (
+            <a
+              href={btn.link}
+              class={`${btn.primary ? "btn-accent btn-left" : "btn-white"} w-full md:w-auto`}
+            >
+              <span class="drop-shadow-sm">{btn.name}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
