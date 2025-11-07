@@ -3,6 +3,7 @@ import CTALeft from '../components/ctas/CTALeft.astro';
 import CTARight from '../components/ctas/CTARight.astro';
 import Enroll from '../components/forms/Enroll.astro';
 import HeaderMain from '../components/headers/HeaderMain.astro';
+import TextIcons from '../components/sections/TextIcons.astro';
 import Why from '../components/sections/Why.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../data/consts';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -205,6 +206,7 @@ const data = {
 	siteDescription={SITE_DESCRIPTION}
 >
 	<HeaderMain />
+	<TextIcons />
 	<CTARight />
 	<Why />
 	<CTALeft />
