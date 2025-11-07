@@ -1,0 +1,98 @@
+---
+import ImageComp from "../utils/ImageComp.astro";
+
+const example = 
+  {
+    image: {
+    src: "/src/assets/stock-man-airplanes-museum.jpg",
+      alt: "Student pilots preparing for flight at Pilot Instructional Center",
+    },
+    upperHeader: "WHY BECOME A PILOT",
+    title: "Turn Your Passion for Flight into a Career",
+    description:
+      "Becoming a pilot isn’t just about flying—it’s about freedom, mastery, and opportunity. From private flying adventures to professional aviation careers, the sky is truly the limit. At Pilot Instructional Center, we’ll help you take your first steps confidently with expert guidance and real-world instruction.",
+    descriptions: [
+      "Experience the thrill of flight and personal growth.",
+      "Gain in-demand skills that open doors worldwide.",
+      "Join a community of professionals who love what they do.",
+    ],
+    bullets: [
+      {
+        icon: "M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Zm1 14h-2v-2h2v2Zm0-4h-2V6h2v6Z",
+        title: "Career Growth & Opportunity",
+        description:
+          "Commercial aviation, charter operations, and corporate flying all need skilled pilots. Training now positions you for a career that’s in high demand and globally respected.",
+      },
+      {
+        icon: "M4 6h16v2H4V6Zm0 4h16v2H4v-2Zm0 4h10v2H4v-2Z",
+        title: "Freedom & Adventure",
+        description:
+          "Enjoy the unmatched perspective of seeing the world from above. Flying offers a lifestyle of independence, exccontentent, and exploration few other careers can match.",
+      },
+      {
+        icon: "M12 4a8 8 0 1 0 0 16a8 8 0 0 0 0-16Zm1 8H8v-2h5v2Z",
+        title: "Challenge & Achievement",
+        description:
+          "Learning to fly is one of life’s most rewarding accomplishments—an achievement that builds confidence, discipline, and problem-solving skills that last a lifetime.",
+      },
+    ],
+    button: {
+      text: "Start Your Pilot Journey",
+      href: "/contact",
+    },
+  };
+
+
+const { content = example } = Astro.props;
+---
+<div class="bg-stone-100">
+    <div class=" flex-1 text-primary-600 py-24">
+        <div class="flex flex-col px-8 py-12 sm:px-12 lg:py-20 text-center items-center">
+            <span class="">
+                {content.upperHeader}
+            </span>
+            <h2
+            class="text-4xl font-semibold tracking-tight text-pretty sm:text-5xl"
+            >
+            {content.title}
+            </h2>
+            <p class="mt-6 text-lg/8 text-pretty font-extralight max-w-3xl">
+            {content.description}
+            </p>
+            <ul class="flex flex-col lg:flex-row justify-center items-center lg:justify-between gap-12 py-12">
+                {
+                    content.bullets.map((bullet: any) => (
+                        <div class="flex flex-col">
+                            <div class="mb-4 ">
+                            <svg
+                                class="w-8 h-8 mx-auto"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d={bullet.icon || "M5 13l4 4L19 7"}
+                                />
+                            </svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-center mb-2 uppercase">
+                            {bullet.title}
+                            </h3>
+                            {/* <p class="text-gray-500 text-sm text-center">
+                            {bullet.description}
+                            </p> */}
+                        </div>
+                        ))
+                }
+            </ul>
+            <div class="mt-10 flex">
+                <a href={content.button.href} class="btn-accent btn-middle ">
+                    {content.button.text}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
