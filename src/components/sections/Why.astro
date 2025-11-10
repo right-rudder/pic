@@ -185,7 +185,7 @@ const { content = example } = Astro.props;
                                         {bullet.title}
                                     </h3>
                                     <p class="text-white/90 text-sm text-center">
-                                        {bullet.description}
+                                          {bullet.description}
                                     </p>
                                 </div>
                                 ))
@@ -222,13 +222,13 @@ const { content = example } = Astro.props;
                     >
                     {item.title}
                     </h2>
-                    <p class="mt-6 text-lg/8 text-pretty text-gray-300 md:max-w-2xl">
+                    <p class="mt-6 text-lg/8 text-pretty text-gray-300 md:max-w-2xl border-b-1 border-white/30">
                     {item.description}
                     </p>
                     {
-                        item.descriptions.map((description: any) =>(<p class="mt-2 text-base text-pretty text-gray-300">{description}</p>)) 
+                        item.descriptions.map((description: any) =>(<p class="mt-2 text-base  text-pretty text-white py-2"> <span class="text-xl font-bold">⟨</span>  {description}  <span class="text-xl font-bold">⟩</span> </p>)) 
                     }
-                    <div class="mt-10 flex">
+                    <div class="mt-10 flex ">
                         <a href={item.button.href} class="btn-accent btn-middle">
                             {item.button.text}
                         </a>
