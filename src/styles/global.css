@@ -21,7 +21,7 @@ body {
 }
 
 .btn-accent {
-  @apply text-center tracking-wide font-bold text-2xl py-2  bg-primary-600 ring-3 ring-primary-300 text-white  duration-300 ease-in-out;
+  @apply text-center tracking-wide font-bold text-2xl py-2  bg-primary-600 ring-3 ring-primary-300 text-white hover:scale-110 hover:bg-primary-800 hover:ring-white duration-300 ease-in-out;
 }
 
 .btn-left {
