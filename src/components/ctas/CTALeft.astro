@@ -18,32 +18,52 @@ const example = {
 const { content = example } = Astro.props;
 ---
 
-<div class="py-12 bg-primary-300">
-  <div class="mx-auto flex max-w-7xl flex-col overflow-hidden md:flex-row">
-    
-    <div class=" flex-1 text-white">
-      <div class="flex flex-col px-8 py-12 sm:px-12 lg:py-20">
-        <h2
-          class="text-4xl font-semibold tracking-tight text-pretty sm:text-5xl"
-        >
-          {content.title}
-        </h2>
-        <p class="mt-6 text-lg/8 text-pretty text-gray-300">
+<div class="relative py-12 bg-primary-300 overflow-hidden">
+  <!-- Top floating button -->
+  <a
+    href={content.button.href}
+    class="bg-stone-100 rounded-r-full text-2xl px-4 py-2 pl-[20%] lg:pl-[30%] absolute top-6 left-0 sm:left-0 sm:top-16"
+  >
+    {content.button.text}
+  </a>
+
+  <!-- Image container on the right -->
+  <div class="lg:absolute inset-y-0 right-0 top-12 z-10 md:w-3/4 lg:w-1/3 xl:w-1/3 mt-12 max-h-3/4 flex justify-end">
+    <ImageComp
+      src={content.image.src}
+      alt={content.image.alt}
+      classes="object-cover h-full rounded-tl-full rounded-bl-full w-full"
+    />
+  </div>
+
+  <!-- Text content -->
+  <div class="mx-auto flex max-w-4xl flex-col overflow-hidden md:flex-row justify-end">
+    <div class="flex flex-col px-6 py-10 sm:px-10 lg:py-16 text-left items-start text-white w-full pb-20">
+      <h2 class="text-3xl sm:text-4xl lg:text-6xl font-semibold tracking-tight text-pretty my-6">
+        {content.title}
+      </h2>
+
+      {!content.descriptions && (
+        <p class="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl text-pretty text-gray-300 lg:w-2/3">
           {content.description}
         </p>
+      )}
+
+      <div class="max-w-xl pr-12 flex flex-col justify-end items-start">
+        {content.descriptions &&
+          content.descriptions.map((description: any) => (
+            <p class="text-sm lg:text-lg text-gray-300">{description}</p>
+          ))}
       </div>
-    
-      <a href={content.button.href} class="btn-accent btn-left self-start">
-          {content.button.text}</a
+
+      <a
+        href={content.button.href}
+        class="btn-accent btn-middle mt-6 bottom-6 left-6 sm:left-0 sm:bottom-8"
       >
-    </div>
-    
-    <div class="flex-1 ">
-      <ImageComp
-        src={content.image.src}
-        alt={content.image.alt}
-        classes="object-cover h-full w-full rounded-tl-full rounded-bl-full"
-      />
+        {content.button.text}
+      </a>
     </div>
   </div>
 </div>
+
+
