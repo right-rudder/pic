@@ -8,6 +8,7 @@ import TextIcons from '../components/sections/TextIcons.astro';
 import Why from '../components/sections/Why.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../data/consts';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import 'aos/dist/aos.css';
 
 const data = {
 	header: {
@@ -214,3 +215,14 @@ const data = {
 	<Enroll />
 	<FAQ />
 </BaseLayout>
+
+<script is:client>
+  import AOS from "aos";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  });
+</script>

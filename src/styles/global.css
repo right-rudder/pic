@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @tailwind utilities;
+@import "aos/dist/aos.css";
 
 @theme {
   --color-primary-300: #745e4d;
