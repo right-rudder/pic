@@ -60,7 +60,7 @@ export const LOCATION_KEYWORDS = {
 };
 
 export const OG_IMAGE = "";
-export const FAVICON = "";
+export const FAVICON = "/FavIconWhite.png";
 export const LOGO = "";
 export const LOGO_ASSETS = "";
 
